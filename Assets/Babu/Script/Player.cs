@@ -1,3 +1,4 @@
+using PlasticPipe.PlasticProtocol.Messages;
 using UnityEngine;
 
 namespace babu
@@ -14,7 +15,8 @@ namespace babu
 
         void Update()
         {
-            Move(); 
+            Move();
+            fireBullet();
         }
 
         void Start()
@@ -51,6 +53,21 @@ namespace babu
                 bullet.GetComponent<Bullet>().SetBullet(BulletPoint.position + Vector3.forward);
             }
         }
+        
+        void OnTriggerEnete(Collider other)
+        {
+            if(other.CompareTag("Bullet"))
+            {
+                return;
+            }
+
+            if (other.CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+                Destroy(gameObject);
+            }
+        }
+
 
     }
 }
