@@ -48,7 +48,7 @@ namespace babu
                 for(int i=0; i<enemyCount; i++)
                 {
                     GameObject enemy =
-                        listEnemys[Random.Range(0, Enemy.Length)];
+                        Enemy[Random.Range(0, Enemy.Length)];
                     Vector3 spawnPosition =
                         new Vector3(Random.Range(
                             -spawnValue.x, spawnValue.x),

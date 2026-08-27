@@ -20,9 +20,7 @@ namespace babu
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            this.GetComponent<Rigidbody>().linearVelocity
-                = transform.forward * speed;
-            InvokeRepeating("fireBullet", delay, fireRate);
+            
 
             Player = GameObject.FindGameObjectWithTag("Player");
 
@@ -30,6 +28,10 @@ namespace babu
             {
                 Debug.Log("Player Not Found");
             }
+
+            this.GetComponent<Rigidbody>().linearVelocity
+                = transform.forward * speed;
+
             InvokeRepeating("fireBullet", delay, fireRate);
         }
 
@@ -46,8 +48,8 @@ namespace babu
         // Update is called once per frame
         void Update()
         {
-            fireBullet();
-            Move();
+            
+            //Move();
         }
 
 

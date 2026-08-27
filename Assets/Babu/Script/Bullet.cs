@@ -25,7 +25,7 @@ namespace babu
             dir = destination = this.transform.position;
         }
 
-        void OnTriggerEnete(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             if (isPlayer)
             {
