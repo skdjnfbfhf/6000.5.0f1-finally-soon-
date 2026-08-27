@@ -14,6 +14,7 @@ namespace babu
 
         public float hp = 1.0f;
         public float maxHp = 1.0f;
+        Rigidbody thisRigi;
 
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,16 +23,24 @@ namespace babu
             this.GetComponent<Rigidbody>().linearVelocity
                 = transform.forward * speed;
             InvokeRepeating("fireBullet", delay, fireRate);
+
+            Player = GameObject.FindGameObjectWithTag("Player");
+
+            if(Player == null)
+            {
+                Debug.Log("Player Not Found");
+            }
+            InvokeRepeating("fireBullet", delay, fireRate);
         }
 
         void fireBullet()
         {
             if(Player != null)
             {
-                GameObject bullet = Instantiate(
-                    objBullet, BulletPoint.transform.position, this.transform.rotation);
-                bullet.GetComponent<Bullet>().SetBullet(
-                    Player.transform.position);
+                GameObject bullet = Instantiate(objBullet, BulletPoint.transform.position, this.transform.rotation);
+                Bullet bulletScript = bullet.GetComponent<Bullet>();
+                bulletScript.isPlayer = false;
+                bulletScript.SetBullet(Player.transform.position);
             }
         }
         // Update is called once per frame
@@ -47,8 +56,8 @@ namespace babu
         {
             if (Player != null)
             {
-                Vector3 dir = Player.transform.position - this.transform.position;
-                this.GetComponent<Rigidbody>().AddForce(new Vector3(dir.x, 0, 0) * Time.deltaTime);
+                transform.position +=
+                Vector3.down * speed * Time.deltaTime;
             }
         }
 

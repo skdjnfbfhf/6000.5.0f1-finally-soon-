@@ -64,8 +64,8 @@ namespace babu
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
-                Destroy(gameObject);
-            }
+                Destroy(this.gameObject);
+            }            
         }
 
 
