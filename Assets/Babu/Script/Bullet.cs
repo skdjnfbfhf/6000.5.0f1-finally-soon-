@@ -13,6 +13,7 @@ namespace babu
         public bool isPlayer = true;
 
         public Vector3 dir;
+        public GameObject Item;
 
         private void Update()
         {
@@ -31,9 +32,9 @@ namespace babu
             {
                 if (other.CompareTag("Enemy"))
                 {
+                    Instantiate(Item, this.transform.position, Item.transform.rotation);
                     Destroy(other.gameObject);
                     Destroy(this.gameObject);
-                    return;
                 }
             }
             else
@@ -43,6 +44,17 @@ namespace babu
                     Destroy(other.gameObject);
                     Destroy(this.gameObject);
                 }
+            }
+            if (other.CompareTag("Player"))
+            {
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
+                return;
+            }
+            if (other.CompareTag("Enemy"))
+            {
+                Destroy(other.gameObject);
+                Destroy(this.gameObject);
             }
         }
 
