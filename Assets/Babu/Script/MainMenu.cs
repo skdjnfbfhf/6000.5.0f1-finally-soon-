@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace babu
 {
@@ -10,10 +11,12 @@ namespace babu
         public GameObject Story;
         public GameObject Setting;
 
+        public GameObject BackMusic;
+        public GameObject BackSound;
 
         public void BtnStart()
         {
-            SceneManager.LoadScene("SampleScene");
+            /*SceneManager.LoadScene("SampleScene");*/
         }
         public void BtnSetting()
         {
@@ -40,10 +43,38 @@ namespace babu
         {
             MenuBack.GetComponent<Animator>().SetTrigger("Open");
         }
-
-        public void BtnBGsound()
+        public void BtnBGSound()
         {
-            SettingSound().GetComponent<Text>().text = "¹è°æÀ½¾Ç ²û";
+            if (BackMusic.GetComponent<Text>().text == "¹è°æÀ½¾Ç")
+            {
+                GameDataManager.instance.isMusic = 0;
+            }
+            else
+            {
+                GameDataManager.instance.isMusic = 1;
+            }
+            GameDataManager.instance.SaveData();
+        }
+
+        public void SetData()
+        {
+            if(GameDataManager.instance.isMusic == 0)
+            {
+                BackMusic.GetComponent<Text>().text = "¹è°æÀ½¾Ç";
+            }
+            else if(GameDataManager.instance.isMusic == 0)
+            {
+                BackMusic.GetComponent<Text>().text = "¹è°æÀ½¾Ç ²û";
+            }
+            if (GameDataManager.instance.isSound == 0)
+            {
+                BackSound.GetComponent<Text>().text = "¹è°æÀ½¾Ç";
+            }
+            else if (GameDataManager.instance.isSound == 0)
+            {
+                BackSound.GetComponent<Text>().text = "¹è°æÀ½¾Ç ²û";
+            }
+            
         }
 
 
