@@ -13,6 +13,10 @@ namespace babu
         public GameObject objBullet;
         public Transform BulletPoint;
 
+        public float Hp;
+        public int Upgrade;
+        public int Bomb;
+
         void Update()
         {
             Move();

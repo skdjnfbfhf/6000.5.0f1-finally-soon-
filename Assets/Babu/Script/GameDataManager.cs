@@ -11,6 +11,13 @@ namespace babu
         public int gameScore;
         public string curld;
 
+        public float maxHp = 5f;
+        public int upgrade = 0;
+        public int maxUpgrade = 3;
+        public int bomb = 0;
+        public int maxBomb = 3;
+
+
         private void Awake()
         {
             DontDestroyOnLoad(instance);
@@ -24,16 +31,11 @@ namespace babu
         }
         public void SaveData()
         {
-            if (PlayerPrefs.HasKey("id"))
-            {
-                string id = PlayerPrefs.GetString("id");
-                Debug.Log(id);
-                PlayerPrefs.DeleteKey("id");
-            }
-            else
-            {
-                PlayerPrefs.SetString("id", "Babu");
-            }
+            
+           
+            PlayerPrefs.SetString("id", curld);
+            PlayerPrefs.SetInt("score", gameScore);
+
             PlayerPrefs.SetInt("Music", isMusic);
             PlayerPrefs.SetInt("Sound", isSound);
         }
@@ -51,8 +53,31 @@ namespace babu
             isMusic = PlayerPrefs.GetInt("Music");
             isSound = PlayerPrefs.GetInt("Sound");
 
+            if(!PlayerPrefs.HasKey("id"))
+            {
+                PlayerPrefs.SetString("id", curld);
+            }
+            if(!PlayerPrefs.HasKey("score"))
+            {
+                PlayerPrefs.SetInt("score", 0);
+            }
+            gameScore = PlayerPrefs.GetInt("score");
             Debug.Log(isMusic);
             Debug.Log(isSound);
+        }
+        
+        public void LoadData2()
+        {
+            if (!PlayerPrefs.HasKey("saveData"))
+            {
+                string saveData = curld + "." + gameScore;
+                PlayerPrefs.SetString("savveData", saveData);
+            }
+            string tempData = PlayerPrefs.GetString("saveData");
+            string[] data = tempData.Split('.');
+
+            curld = data[0];
+            gameScore = int.Parse(data[1]);
         }
     }
 }

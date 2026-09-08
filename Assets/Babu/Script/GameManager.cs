@@ -1,7 +1,9 @@
+using Codice.Client.Common;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace babu
 {
@@ -27,11 +29,23 @@ namespace babu
         public GameStatus gameStatus = GameStatus.none;
 
 
+        public Text HP;
+        public Text Upgrade;
+        public Text Bomb;
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
             gameStatus = GameStatus.play;
             StartCoroutine(SpawnEnemy());
+            Player player = GameObject.Find("Player").GetComponent<Player>();
+            player.Hp = GameDataManager.instance.maxHp;
+            player.Upgrade = GameDataManager.instance.upgrade;
+            player.Bomb = GameDataManager.instance.bomb;
+
+            HP.text = "HP" + player.Hp;
+            Upgrade.text = "Upgrade" + player.Upgrade;
+            Bomb.text = "Bomb" + player.Bomb;
         }
 
         // Update is called once per frame
