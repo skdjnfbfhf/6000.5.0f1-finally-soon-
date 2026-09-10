@@ -28,7 +28,7 @@ namespace babu
         }
         public GameStatus gameStatus = GameStatus.none;
 
-
+        public Text score;
         public Text HP;
         public Text Upgrade;
         public Text Bomb;
@@ -46,6 +46,7 @@ namespace babu
             HP.text = "HP" + player.Hp;
             Upgrade.text = "Upgrade" + player.Upgrade;
             Bomb.text = "Bomb" + player.Bomb;
+            score.text = "Score" + player.score;                        
         }
 
         // Update is called once per frame

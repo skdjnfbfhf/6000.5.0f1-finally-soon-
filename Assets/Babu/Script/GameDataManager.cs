@@ -11,7 +11,7 @@ namespace babu
         public int gameScore;
         public string curld;
 
-        public float maxHp = 5f;
+        public float maxHp = 10f;
         public int upgrade = 0;
         public int maxUpgrade = 3;
         public int bomb = 0;

@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Babu::babu.Bullet
   destination: {x: 0, y: 0, z: 0}
-  speed: 1
+  speed: 10
   isPlayer: 1
   dir: {x: 0, y: 0, z: 1}
   Item: {fileID: 2089660068463068519, guid: 621fb85343dabea44886f48bf8dd3d66, type: 3}

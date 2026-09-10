@@ -16,6 +16,7 @@ namespace babu
         public float Hp;
         public int Upgrade;
         public int Bomb;
+        public int score;
 
         void Update()
         {
@@ -50,23 +51,30 @@ namespace babu
         {
             reloadTime += Time.deltaTime;
 
-            if(Input.GetButton("Fire1") && (bulletTime <= reloadTime))
+            if (Input.GetButton("Fire1") && (bulletTime <= reloadTime))
             {
                 reloadTime = 0f;
                 GameObject bullet = Instantiate(objBullet, BulletPoint.position, this.transform.rotation);
                 bullet.GetComponent<Bullet>().SetBullet(BulletPoint.position + Vector3.forward);
             }
         }
-        
+
         void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Enemy"))
             {
                 Destroy(other.gameObject);
                 Destroy(this.gameObject);
-            }            
+                score = GameDataManager.instance.gameScore;
+            }
+            if (other.CompareTag("Item"))
+            {
+                Player player = GameObject.Find("Player").GetComponent<Player>();
+                player.Hp += 1;
+            }
+            Destroy(other.gameObject);
         }
-
-
     }
 }
+
+    
