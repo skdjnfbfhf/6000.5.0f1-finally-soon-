@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Time = UnityEngine.Time;
+
 
 namespace babu
 {
@@ -18,6 +20,13 @@ namespace babu
         public float waveWait;
 
         public List<GameObject> listEnemys = new List<GameObject>();
+
+
+        public float bossTime;
+        public Boss bossScript;
+        public bool isBoss = false;
+        public float gameTime;
+
 
         public enum GameStatus
         {
@@ -52,7 +61,16 @@ namespace babu
         // Update is called once per frame
         void Update()
         {
-        
+            if (!isBoss)
+            {
+                if(gameTime > bossTime)
+                {
+                    StopAllCoroutines();
+                    Invoke("BossInit", 2.0f);
+                    isBoss = true;
+                }
+                gameTime += Time.deltaTime;
+            }
         }
 
         IEnumerator SpawnEnemy()
@@ -75,5 +93,12 @@ namespace babu
                 yield return new WaitForSeconds(waveWait);
             }
         }
+
+        public void BossInit()
+        {
+            Vector3 spawnPosition = new Vector3(Random.Range(-spawnValue.x, spawnValue.x), spawnValue.y, spawnValue.z);
+            Instantiate(bossScript, spawnPosition,bossScript.transform.rotation);
+        }
+
     }
 }

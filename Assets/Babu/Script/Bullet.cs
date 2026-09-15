@@ -8,7 +8,7 @@ namespace babu
         private Vector3 destination;
         [UnityEngine.SerializeField]
         public float speed = 1.0f;
-        private bool isThrow = false;
+//        private bool isThrow = false;
 
         public bool isPlayer = true;
 

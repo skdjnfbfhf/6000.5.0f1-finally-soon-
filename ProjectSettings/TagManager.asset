@@ -8,6 +8,7 @@ TagManager:
   - Bullet
   - Item
   - item
+  - GameManager
   layers:
   - Default
   - TransparentFX

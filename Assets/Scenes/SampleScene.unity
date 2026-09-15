@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 341226325}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -373,6 +373,10 @@ MonoBehaviour:
   startWait: 1
   waveWait: 1
   listEnemys: []
+  bossTime: 0
+  bossScript: {fileID: 3408022304617026693, guid: f4ffbcf3443f0be4a99b141022efc4ed, type: 3}
+  isBoss: 0
+  gameTime: 0
   gameStatus: 0
   score: {fileID: 275032356}
   HP: {fileID: 1159452207}
